@@ -1,0 +1,23 @@
+# railway.toml
+# Configuração para deploy de um projeto WordPress com Dockerfile
+
+[build]
+# Informa ao Railway que este projeto deve ser construído usando o Dockerfile
+builder = "DOCKERFILE"
+
+# Se o seu Dockerfile estiver dentro da pasta MILLENIUM, use esta linha:
+# dockerfilePath = "MILLENIUM/Dockerfile"
+
+[deploy]
+# Comando padrão do container PHP Apache
+startCommand = "apache2-foreground"
+
+# Define as portas expostas (opcional, o Railway detecta automaticamente)
+restartPolicyType = "ON_FAILURE"
+
+# Define as variáveis de ambiente usadas pelo WordPress
+[env]
+WORDPRESS_DB_HOST = "db:3306"
+WORDPRESS_DB_USER = "wpuser"
+WORDPRESS_DB_PASSWORD = "wppassword"
+WORDPRESS_DB_NAME = "wordpress"
